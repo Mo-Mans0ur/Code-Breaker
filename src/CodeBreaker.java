@@ -17,14 +17,16 @@ public class CodeBreaker {
         //decode
 
         int[] ben = {2, 5, 14};
-
+        int[] hello = {8, 5, 12, 12, 15};
 
         System.out.println(numberCypherDecoder(ben));
-
+        System.out.println(numberCypherDecoder(hello));
 
         //CeacarsEncoder
         System.out.println(ceacarsEncoder("venivedivici"));
 
+        //CeacarsDecoder
+        System.out.println(ceacarsDecoder("yhqlyhglylfl"));
 
     }
 
@@ -57,7 +59,7 @@ public class CodeBreaker {
         }
         return decodedString;
     }
-
+        //Ceacars Encoder
     public static char ceasarsCharEncoder(char encodedChar) {
         int returnPosition = abc.indexOf(encodedChar + 3);
 
@@ -76,4 +78,22 @@ public class CodeBreaker {
         return encodedSentence;
     }
 
+    //Ceacars Decoder
+    public static char ceasarsCharDecoder(char DecodedChar) {
+        int returnPosition = abc.indexOf(DecodedChar - 3);
+
+        return abc.charAt(returnPosition);
+    }
+
+    public static String ceacarsDecoder(String decodedString) {
+
+        String decodedSentence = "";
+
+        for (int i = 0; i < decodedString.length(); i++) {
+
+            decodedSentence += ceasarsCharDecoder(decodedString.charAt(i));
+        }
+
+        return decodedSentence;
+    }
 }
