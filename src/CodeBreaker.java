@@ -1,53 +1,70 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CodeBreaker {
+    public static String abc = "abcdefghijklmnopqrstuvwxyz ";
+
     public static void main(String[] args) {
 
-        String word = "ben";
+       //encode
         String encoded = numberCypherEncoder("ben");
         System.out.println(encoded);
         String encoded2 = numberCypherEncoder("hello");
         System.out.println(encoded2);
 
-        int[] result = new int[word.length()];
 
-        String decoded = numberCypherDecoder(word);
-        System.out.println(decoded);
+
+        //decode
+
+        int[] ben = {2, 5, 14};
+
+
+        System.out.println(numberCypherDecoder(ben));
+
+
+        //CeacarsEncoder
+        ceacarsEncoder("veni vedi vici");
+
+
     }
 
     //Encoder
-    public static String numberCypherEncoder(String word ) {
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    public static String numberCypherEncoder(String word) {
 
         String encodedString = "";
 
         for (int i = 0; i < word.length(); i++) {
             char stringToIndex = word.charAt(i);
-            //System.out.println(stringToIndex);
 
-            int charAtIndex = alphabet.indexOf(stringToIndex + 1);
-            //System.out.println(charAtIndex);
-            encodedString = encodedString + charAtIndex +";" ;
+            int charAtIndex = abc.indexOf(stringToIndex + 1);
+
+            encodedString = encodedString + charAtIndex + ";" ;
         }
 
         return encodedString;
     }
 
     //decoder
-    public static String numberCypherDecoder(String word) {
-        String alphabet2 = "abcdefghijklmnopqrstuvwxyz";
+    public static String numberCypherDecoder(int[] indexes) {
 
         String decodedString = "";
 
-        for (int i = 0; i < word.length(); i++) {
-            int indexToString = word.indexOf(i);
+        for (int i = 0; i < indexes.length; i++) {
+            int temp = indexes[i]-1;
+            System.out.print(abc.charAt(temp));
 
-            int indexToChar = alphabet2.indexOf(indexToString - 1);
-
-            decodedString += indexToChar;
 
         }
         return decodedString;
+    }
+
+    public static String ceacarsEncoder(String nonCodedString) {
+        String sentence = numberCypherEncoder(nonCodedString);
+        String sentencePlus3 = sentence + 3;
+
+        System.out.println(sentencePlus3);
+
+        return sentencePlus3;
     }
 
 }
