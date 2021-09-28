@@ -32,4 +32,18 @@ public class test {
 
          */
     }
+
+    public static String wordEncoded(String wordToEncode)
+    {
+
+        String wordToReturn = "";
+
+        for (int i = 0; i < wordToEncode.length(); i++)
+        {
+            //wordToReturn += caesarCharacterEncoded(wordToEncode.charAt(i));
+        }
+
+        return wordToReturn;
+    }
+
 }

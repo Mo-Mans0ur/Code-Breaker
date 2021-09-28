@@ -23,7 +23,7 @@ public class CodeBreaker {
 
 
         //CeacarsEncoder
-        ceacarsEncoder("veni vedi vici");
+        System.out.println(ceacarsEncoder("venivedivici"));
 
 
     }
@@ -58,13 +58,22 @@ public class CodeBreaker {
         return decodedString;
     }
 
+    public static char ceasarsCharEncoder(char encodedChar) {
+        int returnPosition = abc.indexOf(encodedChar + 3);
+
+        return abc.charAt(returnPosition);
+    }
+
     public static String ceacarsEncoder(String nonCodedString) {
-        String sentence = numberCypherEncoder(nonCodedString);
-        String sentencePlus3 = sentence + 3;
 
-        System.out.println(sentencePlus3);
+        String encodedSentence = "";
 
-        return sentencePlus3;
+        for (int i = 0; i < nonCodedString.length(); i++) {
+
+            encodedSentence += ceasarsCharEncoder(nonCodedString.charAt(i));
+        }
+
+        return encodedSentence;
     }
 
 }
